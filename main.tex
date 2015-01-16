@@ -32,7 +32,7 @@
 %\usetheme{Singapore}
 %\usetheme{Szeged}
 %\usetheme{Warsaw}
-
+\usepackage{todonotes}
 \title{Multivariate Statistics and and Pattern Recognition}
 
 % A subtitle is optional and this may be deleted
@@ -89,7 +89,7 @@
 
 
 %------------------NOTES---------------%
-% - Different Classifiers
+% - Different Classifiers (pdf)
 %   - Parametric 
 %   - Non-parametric
 % - Cross-validation (180, 312, 332)
@@ -114,117 +114,25 @@
     Skin or Nonskin
     \pause
     \begin{itemize}
-        \item {
-            Predict Skin or Nonskin based on \texttt{'R G B'}.    
-        }
-        \item \texttt{74 85 123 1}
-        \item \texttt{61 62 18 2}
+        \item Predict Skin or Nonskin based on \texttt{'R G B'}. 
+        \pause
+        \begin{itemize}
+            \item Skin: \texttt{74 85 123 1}
+            \item Nonskin: \texttt{61 62 18 2}
+        \end{itemize}
     \end{itemize}
   }
   \end{itemize}
 \end{frame}
 
-% You can reveal the parts of a slide one at a time
-% with the \pause command:
-\begin{frame}{Second Slide Title}
-  \begin{itemize}
-  \item {
-    First item.
-    \pause % The slide will pause after showing the first item
-  }
-  \item {   
-    Second item.
-  }
-  % You can also specify when the content should appear
-  % by using <n->:
-  \item<3-> {
-    Third item.
-  }
-  \item<4-> {
-    Fourth item.
-  }
-  % or you can use the \uncover command to reveal general
-  % content (not just \items):
-  \item<5-> {
-    Fifth item. \uncover<6->{Extra text in the fifth item.}
-  }
-  \end{itemize}
-\end{frame}
+\section{Classification}
 
-\section{Second Main Section}
-
-\subsection{Another Subsection}
-
-\begin{frame}{Blocks}
-\begin{block}{Block Title}
-You can also highlight sections of your presentation in a block, with it's own title
-\end{block}
-\begin{theorem}
-There are separate environments for theorems, examples, definitions and proofs.
-\end{theorem}
-\begin{example}
-Here is an example of an example block.
-\end{example}
-\end{frame}
-
-% Placing a * after \section means it will not show in the
-% outline or table of contents.
-\section*{Summary}
-
-\begin{frame}{Summary}
-  \begin{itemize}
-  \item
-    The \alert{first main message} of your talk in one or two lines.
-  \item
-    The \alert{second main message} of your talk in one or two lines.
-  \item
-    Perhaps a \alert{third message}, but not more than that.
-  \end{itemize}
-  
-  \begin{itemize}
-  \item
-    Outlook
+\section{To Do}
+\begin{frame}{To Do}
     \begin{itemize}
-    \item
-      Something you haven't solved.
-    \item
-      Something else you haven't solved.
+        \item Cumulative Eigenvalues(pcam)
     \end{itemize}
-  \end{itemize}
 \end{frame}
-
-
-
-% All of the following is optional and typically not needed. 
-\appendix
-\section<presentation>*{\appendixname}
-\subsection<presentation>*{For Further Reading}
-
-\begin{frame}[allowframebreaks]
-  \frametitle<presentation>{For Further Reading}
-    
-  \begin{thebibliography}{10}
-    
-  \beamertemplatebookbibitems
-  % Start with overview books.
-
-  \bibitem{Author1990}
-    A.~Author.
-    \newblock {\em Handbook of Everything}.
-    \newblock Some Press, 1990.
- 
-    
-  \beamertemplatearticlebibitems
-  % Followed by interesting articles. Keep the list short. 
-
-  \bibitem{Someone2000}
-    S.~Someone.
-    \newblock On this and that.
-    \newblock {\em Journal of This and That}, 2(1):50--100,
-    2000.
-  \end{thebibliography}
-\end{frame}
-
 \end{document}
 
 
