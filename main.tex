@@ -33,6 +33,11 @@
 %\usetheme{Szeged}
 %\usetheme{Warsaw}
 \usepackage{todonotes}
+\usepackage{xcolor,colortbl}
+
+\usepackage{tikz}
+\usepackage{pgfplots}
+
 \title{Multivariate Statistics and and Pattern Recognition}
 
 % A subtitle is optional and this may be deleted
@@ -96,6 +101,14 @@
 % - Feature reduction (216) / Selection (185, 195)
 % - MATLAB code in appendix + print + usb stick
 % - 
+% - Probability Theory
+% - Classifiers
+% - Regression
+% - Parameter estimation of Gaussian
+% - Multivariate Gaussian 
+% - Feature selection
+% - Clustering
+% - PCA
 %--------------------------------------%
 
 
@@ -125,12 +138,146 @@
   \end{itemize}
 \end{frame}
 
+\section{Analysing the data}
+
+\subsection{Preparing the data}
+
+\begin{frame}{Analysing the data}{Preparing the data}
+    \begin{columns}
+    \column{0.4\textwidth}
+    \begin{itemize}
+        \item Load data 
+        \item Generate prdata (245057)
+        \item Generate prdataSmall (1000)
+    \end{itemize}
+    \column{0.6\textwidth}
+        \includegraphics[scale=0.3]{smalldata.png}
+        
+        \includegraphics[scale=0.30]{training.png}
+    \end{columns}
+\end{frame}
+
+\subsection{Components}
+
+\begin{frame}{Analysing the data}{Components}
+    \begin{columns}
+    \column{0.6\textwidth}
+    \begin{itemize}
+        \item Plot components vs each other
+        \item \emph{All three plots shows the skin data (blue) grouped together vs the non-skin (red) more spread out. }
+    \end{itemize}
+    \column{0.4\textwidth}
+        \includegraphics[scale=0.2]{components.png}
+    \end{columns}
+\end{frame}
+
+\subsection{Correlation}
+
+\begin{frame}{Analysing the data}{Correlation}
+    \begin{columns}
+    \column{0.6\textwidth}
+    \begin{itemize}
+        \item Correlation coefficients
+        \includegraphics[scale=0.3]{correlation.png}
+    \end{itemize}
+    \column{0.4\textwidth}
+        \includegraphics[scale=0.2]{CCplot.png}
+    \end{columns}
+\end{frame}
+
+\begin{frame}{Analysing the data}{Principal Component Analysis}
+    \begin{columns}
+    \column{0.6\textwidth}
+    \begin{itemize}
+        \item PCA
+        \item Cumulative Eigenvalues
+        
+        \input{eigen.tex}
+    \end{itemize}
+    \column{0.4\textwidth}
+        \includegraphics[scale=0.2]{PCAplot.png}
+    \end{columns}
+\end{frame}
+
+\begin{frame}{Analysing the data}{Feature Selection}
+    \begin{columns}
+    \column{0.7\textwidth}
+    \begin{itemize}
+        \item featselm(prtrain,ldc([]),'forward',2);
+        \item \emph{Feature 1 (red) and 3 (blue) are selected.}
+        \item featselm(prtrain,dtc([]),'forward',2);
+        \item \emph{Feature 2 (green) and 3 (blue) are selected.}
+    \end{itemize}
+    \column{0.3\textwidth}
+        \includegraphics[scale=0.2]{featureselection.png}
+    \end{columns}
+\end{frame}
+
+\begin{frame}{Analysing the data}{Cluster Evaluation}
+    \begin{columns}
+    \column{0.5\textwidth}
+    \begin{itemize}
+        \item evalclusters(prdatSmall.data,
+        'kmeans','gap','KList',[1:15])
+        \item \emph{Long computation time}
+        \item \emph{Done on reduced dataset}
+    \end{itemize}
+    \column{0.5\textwidth}
+        \input{clusters.tex}
+    \end{columns}
+\end{frame}
+
 \section{Classification}
+
+\begin{frame}{Classification}{Parametric and Non-Parametric}
+    \begin{columns}
+    \column{0.5\textwidth}
+    \begin{itemize}
+        \item Parametric: \emph{ldc, qdc, nmc}
+        \item Non-Parametric: \emph{dtc, perlc, parzenc, knnc}
+        \item Long computation time $\rightarrow$ smaller dataset.
+    \end{itemize}
+    \column{0.5\textwidth}
+        \includegraphics[scale=0.3]{prdat.png}
+    \end{columns}
+\end{frame}
+
+\begin{frame}{Classification}{9 Classification methods}
+    \includegraphics[scale=0.2]{classify.png}
+\end{frame}
+
+
+\definecolor{Green}{RGB}{46, 204, 113}
+\definecolor{Red}{RGB}{231, 76, 60}
+\definecolor{Gray}{RGB}{149, 165, 166}
+\definecolor{Cloud}{RGB}{236, 240, 241}
+
+\newcolumntype{g}{>{\columncolor{Green}}c}
+\newcolumntype{r}{>{\columncolor{Red}}c}
+\newcolumntype{y}{>{\columncolor{Gray}}c}
+\newcolumntype{l}{>{\columncolor{Cloud}}c}
+
+\begin{frame}{Classification}{Accuracy}
+    \begin{table}
+    \resizebox{\columnwidth}{!}{%
+        \begin{tabular}{c|c|c|g|r|c|c|c|l|l}
+        & ldc & qdc & dtc & perlc & fisherc & udc & nmc & parzenc & knnc \\ \hline
+        ac& 0.9316 & 0.9835 & 0.9993 & 0.8170 & 0.9251 & 0.9240 & 0.8242 & 0.9960 & 0.9980 \\ \hline
+        time&  5.46s & 7.32s & 50.41s & 11.95s & 10.04s & 14.51s & 14.90s & 20.34s & 25.68s \\ \hline 
+        & & & best & worst & & & & third & second
+        \end{tabular}
+    }
+    \end{table}
+    \begin{center}
+    \includegraphics[scale=0.25]{bestworst.png}
+    \end{center}
+\end{frame}
 
 \section{To Do}
 \begin{frame}{To Do}
     \begin{itemize}
         \item Cumulative Eigenvalues(pcam)
+        \item Cross-validation method randomly partitions the available data into L equally sized subsets T(l), l = 1,…,L. First the subset T(1) is withheld and a classifier is trained using all the data from the remaining L- 1 subsets.
     \end{itemize}
 \end{frame}
 \end{document}
