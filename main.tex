@@ -157,19 +157,19 @@
     \end{columns}
 \end{frame}
 
-\subsection{Components}
-
-\begin{frame}{Analysing the data}{Components}
-    \begin{columns}
-    \column{0.6\textwidth}
-    \begin{itemize}
-        \item Plot components vs each other
-        \item \emph{All three plots shows the skin data (blue) grouped together vs the non-skin (red) more spread out. }
-    \end{itemize}
-    \column{0.4\textwidth}
-        \includegraphics[scale=0.2]{components.png}
-    \end{columns}
-\end{frame}
+%\subsection{Components}
+%
+%\begin{frame}{Analysing the data}{Components}
+%    \begin{columns}
+%    \column{0.6\textwidth}
+%    \begin{itemize}
+%        \item Plot components vs each other
+%        \item \emph{All three plots shows the skin data (blue) grouped together vs the non-skin (red) more spread out. }
+%    \end{itemize}
+%    \column{0.4\textwidth}
+%        \includegraphics[scale=0.2]{components.png}
+%    \end{columns}
+%\end{frame}
 
 \subsection{Correlation}
 
@@ -215,19 +215,19 @@
     \end{columns}
 \end{frame}
 
-\begin{frame}{Analysing the data}{Cluster Evaluation}
-    \begin{columns}
-    \column{0.5\textwidth}
-    \begin{itemize}
-        \item evalclusters(prdatSmall.data,
-        'kmeans','gap','KList',[1:15])
-        \item \emph{Long computation time}
-        \item \emph{Done on reduced dataset}
-    \end{itemize}
-    \column{0.5\textwidth}
-        \input{clusters.tex}
-    \end{columns}
-\end{frame}
+%\begin{frame}{Analysing the data}{Cluster Evaluation}
+%    \begin{columns}
+%   \column{0.5\textwidth}
+%    \begin{itemize}
+%        \item evalclusters(prdatSmall.data,
+%        'kmeans','gap','KList',[1:15])
+%        \item \emph{Long computation time}
+%        \item \emph{Done on reduced dataset}
+%    \end{itemize}
+%    \column{0.5\textwidth}
+%        \input{clusters.tex}
+%    \end{columns}
+%\end{frame}
 
 \section{Classification}
 \subsection{Parametric and Non-Parametric}
@@ -235,7 +235,7 @@
     \begin{columns}
     \column{0.5\textwidth}
     \begin{itemize}
-        \item Parametric: \emph{ldc, qdc, nmc}
+        \item Parametric: \emph{ldc, qdc, nmc, fisherc}
         \item Non-Parametric: \emph{dtc, parzenc, knnc, svc}
         \item Long computation time $\rightarrow$ smaller dataset.
     \end{itemize}
@@ -245,7 +245,7 @@
 \end{frame}
 
 \begin{frame}{Classification}{9 Classification methods}
-    \includegraphics[scale=0.2]{classify.png}
+    \includegraphics[scale=0.2]{fullnew8.png}
 \end{frame}
 
 
@@ -262,26 +262,25 @@
 \begin{frame}{Classification}{Accuracy / Crossvalidation}
     \begin{table}
     \resizebox{\columnwidth}{!}{%
-        \begin{tabular}{c|c|c|g|c|c|c|r|l|l}
-        & ldc & qdc & dtc & svc & fisherc & udc & nmc & parzenc & knnc \\ \hline
-        ac & 0.9315 & 0.9835 & 0.9992 & 0.9850 & 0.9251 & 0.9240 & 0.8244 & 0.9950 & 0.9940 \\ \hline
-        time &  6.11s & 7.45s & 53.12s & 20.76s & 9.91s & 14.66s & 15.27s & 20.37s & 26.33s \\ \hline 
-        & & & best &  & & & worst & second & third
+        \begin{tabular}{c|c|c|g|c|c|r|l|l}
+        & ldc & qdc & dtc & parzenc & fisherc  & nmc & svc & knnc \\ \hline
+        ac & 0.9313 & 0.9835 & 0.9993 & 0.9910 & 0.9248 & 0.8240 & 0.9930 & 0.9960 \\ \hline
+        time &  6.11s & 7.45s & 53.12s & 20.76s & 9.91s & 15.27s & 20.37s & 26.33s \\ \hline 
+        & & & best &  & & worst & second & third
         \end{tabular}
     }
     \end{table}
     \begin{center}
-    \includegraphics[scale=0.25]{bestworst.png}
+    %\includegraphics[scale=0.25]{bestworst.png}
+    \begin{columns}
+    \column{0.5\textwidth}
+        \centering \includegraphics[scale=0.25]{dtc.png}
+    \column{0.5\textwidth}
+        \centering \includegraphics[scale=0.25]{nmc.png}
+    \end{columns}
     \end{center}
 \end{frame}
 
-\section{To Do}
-\begin{frame}{To Do}
-    \begin{itemize}
-        \item Cumulative Eigenvalues(pcam)
-        \item Cross-validation method randomly partitions the available data into L equally sized subsets T(l), l = 1,…,L. First the subset T(1) is withheld and a classifier is trained using all the data from the remaining L- 1 subsets.
-    \end{itemize}
-\end{frame}
 \end{document}
 
 
