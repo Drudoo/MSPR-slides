@@ -199,6 +199,8 @@
     \end{columns}
 \end{frame}
 
+\subsection{Feature Selection and Cluster Evaluation}
+
 \begin{frame}{Analysing the data}{Feature Selection}
     \begin{columns}
     \column{0.7\textwidth}
@@ -228,13 +230,13 @@
 \end{frame}
 
 \section{Classification}
-
+\subsection{Parametric and Non-Parametric}
 \begin{frame}{Classification}{Parametric and Non-Parametric}
     \begin{columns}
     \column{0.5\textwidth}
     \begin{itemize}
         \item Parametric: \emph{ldc, qdc, nmc}
-        \item Non-Parametric: \emph{dtc, perlc, parzenc, knnc}
+        \item Non-Parametric: \emph{dtc, parzenc, knnc, svc}
         \item Long computation time $\rightarrow$ smaller dataset.
     \end{itemize}
     \column{0.5\textwidth}
@@ -257,14 +259,14 @@
 \newcolumntype{y}{>{\columncolor{Gray}}c}
 \newcolumntype{l}{>{\columncolor{Cloud}}c}
 
-\begin{frame}{Classification}{Accuracy}
+\begin{frame}{Classification}{Accuracy / Crossvalidation}
     \begin{table}
     \resizebox{\columnwidth}{!}{%
-        \begin{tabular}{c|c|c|g|r|c|c|c|l|l}
-        & ldc & qdc & dtc & perlc & fisherc & udc & nmc & parzenc & knnc \\ \hline
-        ac& 0.9316 & 0.9835 & 0.9993 & 0.8170 & 0.9251 & 0.9240 & 0.8242 & 0.9960 & 0.9980 \\ \hline
-        time&  5.46s & 7.32s & 50.41s & 11.95s & 10.04s & 14.51s & 14.90s & 20.34s & 25.68s \\ \hline 
-        & & & best & worst & & & & third & second
+        \begin{tabular}{c|c|c|g|c|c|c|r|l|l}
+        & ldc & qdc & dtc & svc & fisherc & udc & nmc & parzenc & knnc \\ \hline
+        ac & 0.9315 & 0.9835 & 0.9992 & 0.9850 & 0.9251 & 0.9240 & 0.8244 & 0.9950 & 0.9940 \\ \hline
+        time &  6.11s & 7.45s & 53.12s & 20.76s & 9.91s & 14.66s & 15.27s & 20.37s & 26.33s \\ \hline 
+        & & & best &  & & & worst & second & third
         \end{tabular}
     }
     \end{table}
